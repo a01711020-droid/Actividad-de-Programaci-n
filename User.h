@@ -43,4 +43,8 @@ public:
     string toString() const;
 };
 
+<<<<<<< HEAD
 #endif
+=======
+#endif
+>>>>>>> ea15cc2c5232599fb6e58964df0b9b557faa917e
