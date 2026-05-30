@@ -1,13 +1,13 @@
-#ifdef User_H
+#ifndef User_H
 #define User_H
 
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <vector>
-using namespace std
+using namespace std;
 
-class User{
+class User {
 protected:
     int id;
     string name;
@@ -15,39 +15,32 @@ protected:
 
 public:
     User()
-    : name("noname"),id(0),friends(0)
+    : id(0), name("noname")
     {}
 
-    User(const Character &c)
-    : name(c.name),id(c.id),friends(c.friends)
+    User(const User& c)
+    : id(c.id), name(c.name), friends(c.friends)
     {}
 
-    User(string n, int id,)
-    : name(n),int(id)
+    User(string n, int id)
+    : id(id), name(n)
     {}
 
-
-    string getName(){
+    string getName() {
         return name;
     }
-    void setName(const string& name);
-    
-    int getId(){
+    void setName(const string& name) { this->name = name; }
+
+    int getId() {
         return id;
     }
+    void setId(int id) { this->id = id; }
 
-    void setId(int id);
-    vector<User*>& getFriends();
+    vector<User*>& getFriends() { return friends; }
 
     void addFriend(User* u);
     void removeFriend(User* u);
     string toString() const;
 };
 
-
-
-
-
-
-
-#endif 
+#endif
