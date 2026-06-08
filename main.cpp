@@ -58,7 +58,6 @@ void addAUser() {
 	cout << "Name? ";
 	getline(cin, name);
 
-	// counter actúa como ID y como posición en el vector
 	users.push_back(new User(name, counter));
 	counter++;
 }
@@ -72,13 +71,12 @@ void addFriendToUser() {
 	cout << "Which user do you want to add as a friend? ";
 	cin >> id2;
 
-	// Validar que ambos IDs existan y no sean el mismo
 	if (id1 < 0 || id1 >= counter || id2 < 0 || id2 >= counter || id1 == id2) {
 		cout << "[ERROR] ID invalido.\n";
 		return;
 	}
 
-	users[id1]->addFriend(users[id2]); // pasar puntero de id2 a id1
+	users[id1]->addFriend(users[id2]);
 }
 
 void deleteFriendFromUser() {
@@ -114,7 +112,7 @@ int main(int argc, char* argv[]) {
 		cout << "What do you want to do? ";
 		cin >> option;
 		
-		cin.ignore(); // limpiar el \n que queda tras cin >>
+		cin.ignore();
 		switch (option) {
 			case 1 : addAUser(); break;
 			case 2 : cout << "Users:\n"; displayUsers(); break;
@@ -123,7 +121,6 @@ int main(int argc, char* argv[]) {
 		}
 	} while (option != 5);
 
-	// Liberar memoria del heap antes de salir
 	for (int i = 0; i < (int)users.size(); i++) {
 		delete users[i];
 	}
