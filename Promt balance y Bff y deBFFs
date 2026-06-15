@@ -1,1 +1,36 @@
 
+Actua como diseñador de balance para un RPG por turnos en C++. El juego tiene 3
+clases de heroe (Warrior, Archer, Wizard) y 3 niveles de enemigo goblin (Goblin,
+Goblin Captain, Goblin King). El dano que un personaje infligue se ve modificado
+por dos sistemas independientes:
+
+1. Una tabla de ventajas de tipo estilo piedra-papel-tijera (+20% / -20% de daño).
+2. Un buff/debuff de escenario (+20% / -20% de fuerza) que depende de que
+   CharacterType favorece cada uno de los 6 escenarios narrativos.
+
+
+Disena los multiplicadores (1.2 / 0.8 / 1.0) entre los 6 CharacterType cumpliendo
+estos requisitos de justicia:
+
+- Reciprocidad: si A inflige 1.2x a B, entonces B debe infligir 0.8x a A. Nunca un
+  bono sin su contrapeso reciproco.
+- Ningun tipo puede tener solo matchups favorables ni solo desfavorables: cada uno
+  de los 6 tipos debe tener al menos una ventaja (1.2x contra alguien) y al menos
+  una desventaja (0.8x contra alguien).
+- El Goblin King (jefe final) puede tener ventaja sobre las dos clases de dano
+  fisico (Warrior, Archer), justificando su rol de boss, pero debe tener una
+  debilidad clara frente al Wizard como punto debil explotable en la batalla final.
+- El Goblin Captain, al ser la unidad intermedia, puede tener mas matchups
+  desfavorables que favorables (es un enemigo "de transicion"), siempre que
+  conserve al menos uno favorable.
+
+
+Cada uno de los 6 archivos scenario0N.txt asigna un CharacterType "favorecido"
+(+20% fuerza) y uno "perjudicado" (-20% fuerza) para esa narrativa. Disena las 6
+parejas cumpliendo:
+
+
+Formato esperado:
+
+- Tabla completa damageMultiplier(attacker, defender) 
+  Tabla cual character se perjudica en cada escenario.
